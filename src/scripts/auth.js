@@ -12,4 +12,3 @@ document.getElementById('authForm').addEventListener('submit', (e) => {
   document.querySelector('.auth-footer span').addEventListener('click', () => {
     console.log('Переход к регистрации')
   })
-  
