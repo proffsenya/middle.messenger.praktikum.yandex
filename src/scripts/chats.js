@@ -24,6 +24,3 @@ requestAnimationFrame(() => {
       </li>
     `).join('')
   })
-
-
-  
