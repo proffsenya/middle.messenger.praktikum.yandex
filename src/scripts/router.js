@@ -67,4 +67,3 @@ const routes = {
     window.history.pushState({}, '', '/404')
     renderPage('#error404-page', null)
   }
-  

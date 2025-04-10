@@ -44,4 +44,3 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     document.querySelector('.auth-form').prepend(errorElement);
     setTimeout(() => errorElement.remove(), 3000);
   }
-  
