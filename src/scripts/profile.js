@@ -27,3 +27,4 @@ requestAnimationFrame(() => {
     window.location.href = '/';
   });
 });
+
