@@ -1,16 +1,17 @@
+{{> navigation}}
 <div class="container">
   <aside class="sidebar_chats">
     <div class="profile">
-  <a href="/profile" data-link>Профиль →</a>
-</div>
+      <a href="/profile" data-link>Профиль →</a>
+    </div>
     <input class="search" type="text" placeholder="🔍 Поиск" />
-    <ul class="chat-list" id = "chat-list">
+    <ul class="chat-list">
       {{#each chats}}
         <li class="chat-item {{#if selected}}selected{{/if}}">
           <div class="avatar"></div>
           <div class="chat-info">
             <div class="name">{{name}}</div>
-            <div class="last-message">{{lastMessage}}</div>
+            <div class="message">{{message}}</div>
           </div>
           <div class="chat-meta">
             <div class="time">{{time}}</div>

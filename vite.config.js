@@ -5,7 +5,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     handlebars({
-      partialDirectory: path.resolve(__dirname, 'src/templates')
+      partialDirectory: path.resolve(__dirname, 'src/templates/partials')
     }),
   ],
   css: {
