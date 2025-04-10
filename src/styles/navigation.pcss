@@ -1,0 +1,42 @@
+/* Общие стили для навигации */
+.navbar {
+  position: fixed; /* Фиксируем меню в верхней части */
+  top: 0; /* Располагаем его у верхней границы */
+  left: 0;
+  width: 100%;
+  background-color: #333; /* Темный фон */
+  z-index: 1000; /* Размещаем навигацию поверх остальных элементов */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для визуального отделения */
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: center; /* Центрируем список элементов */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-list li {
+  margin: 0 15px; /* Расстояние между элементами */
+}
+
+.navbar-list a {
+  display: block;
+  padding: 10px 20px; /* Внутренние отступы для удобства */
+  color: white; /* Цвет текста */
+  text-decoration: none; /* Убираем подчеркивание */
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease; /* Плавный переход для фона */
+}
+
+.navbar-list a:hover {
+  background-color: #575757; /* Меняем фон при наведении */
+  border-radius: 5px; /* Закругляем углы */
+}
+
+/* Отступы для контента, чтобы не перекрывать его навигацией */
+body {
+  padding-top: 50px; /* Оставляем место для navbar */
+}
