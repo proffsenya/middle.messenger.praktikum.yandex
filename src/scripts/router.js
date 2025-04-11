@@ -125,11 +125,18 @@ if (route.script) {
 }
 
 function router() {
-  const path = window.location.pathname;
+  let path = window.location.pathname;
+
+  if (path === '/') {
+    path = '/chats';
+    window.history.replaceState({}, '', path);
+  }
+
   const route = routes[path] || handleNotFound;
   if (route) renderPage(route);
   else handleNotFound();
 }
+
 
 document.addEventListener('click', e => {
   if (e.target.matches('[data-link]')) {
