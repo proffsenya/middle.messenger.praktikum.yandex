@@ -8,13 +8,19 @@ import error404Template from '../templates/error404.hbs?raw';
 import authTemplate from '../templates/auth.hbs?raw';
 import registerTemplate from '../templates/register.hbs?raw';
 import navigationTemplate from '../templates/partials/navigation.hbs?raw';
+import profileEditTemplateRaw from '../templates/profile-edit.hbs?raw';
+import changePasswordTemplate from '../templates/changePassword.hbs?raw';
+import formFieldRaw from '../templates/partials/form-field.hbs?raw'
+import profileSidebarRaw from '../templates/partials/profile-sidebar.hbs?raw'
 
-// Регистрируем компоненты
 Handlebars.registerPartial('error-layout', errorLayout);
+Handlebars.registerPartial('form-field', formFieldRaw);
 Handlebars.registerPartial('error-links', errorLinks);
+Handlebars.registerPartial('profile-sidebar', profileSidebarRaw);
 Handlebars.registerPartial('navigation', navigationTemplate);
 
-// Моки
+const profileEditTemplate = Handlebars.compile(profileEditTemplateRaw)
+
 const profileData = {
   email: 'pochta@yandex.ru',
   login: 'Ivankanov',
@@ -35,15 +41,14 @@ const chatData = {
   ]
 };
 
-// Маршруты
 const routes = {
   '/auth': {
     template: authTemplate,
-    script: '/src/scripts/auth.js'
+    script: 'auth'
   },
   '/register': {
     template: registerTemplate,
-    script: '/src/scripts/register.js'
+    script: 'register'
   },
   '/404': {
     template: error404Template,
@@ -56,12 +61,27 @@ const routes = {
   '/chats': {
     template: chatsTemplate,
     data: chatData,
-    script: '/src/scripts/chats.js'
+    script: 'chats'
   },
   '/profile': {
     template: profileTemplate,
     data: profileData,
-    script: '/src/scripts/profile.js'
+    script: 'profile'
+  },
+  '/profile/edit': {
+    template: profileEditTemplate({
+      email: 'pochta@yandex.ru',
+      login: 'Ivankanov',
+      firstName: 'Иван',
+      lastName: 'Иванов',
+      displayName: 'Иван',
+      phone: '+7 (909) 967 30 30'
+    }),
+    script: 'profile-edit'
+  },
+  '/profile/changepswd': {
+    template: changePasswordTemplate,
+    script: null,
   }
 };
 
@@ -73,7 +93,6 @@ function renderPage(route) {
     return;
   }
   
-  // Компиляция и рендеринг шаблона
   if (route.template) {
     const compiledTemplate = Handlebars.compile(route.template);
     const html = compiledTemplate(route.data || {});
@@ -87,16 +106,23 @@ function renderPage(route) {
     }
   }
 
-  // Подключение скрипта, если он существует
-  if (route.script) {
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = route.script;
-    document.body.appendChild(script);
+const scripts = import.meta.glob('./scripts/*.js');
+
+if (route.script) {
+  const scriptPath = `./scripts/${route.script}.js`;
+  if (scripts[scriptPath]) {
+    scripts[scriptPath]().then((module) => {
+      console.log(`Скрипт ${route.script} загружен`);
+      if (module && module.default) {
+        module.default();
+      }
+    }).catch((err) => {
+      console.error(`Ошибка при загрузке скрипта ${route.script}:`, err);
+    });
   }
 }
 
-
+}
 
 function router() {
   const path = window.location.pathname;
@@ -105,7 +131,6 @@ function router() {
   else handleNotFound();
 }
 
-// SPA переходы
 document.addEventListener('click', e => {
   if (e.target.matches('[data-link]')) {
     e.preventDefault();
@@ -122,3 +147,4 @@ function handleNotFound() {
   window.history.pushState({}, '', '/404');
   renderPage(routes['/404']);
 }
+

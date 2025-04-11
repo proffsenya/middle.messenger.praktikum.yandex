@@ -1,8 +1,6 @@
 {{> navigation}}
 <div class="profile-page">
-  <div class="sidebar_profile">
-    <a class="sidebar-back-button" href="/chats">←</a>
-  </div>
+  {{> profile-sidebar }}
 
   <div class="profile-container">
     <div class="profile-header">
@@ -34,8 +32,8 @@
     </table>
 
     <div class="profile-actions">
-      <a class="action-link" href="#" id="editData">Изменить данные</a>
-      <a class="action-link" href="#" id="editPassword">Изменить пароль</a>
+      <a class="action-link" href="/profile/edit" id="editData">Изменить данные</a>
+      <a class="action-link" href="/profile/changepswd" id="editPassword">Изменить пароль</a>
       <a class="action-link logout-link" href="#" id="logout">Выйти</a>
     </div>
   </div>

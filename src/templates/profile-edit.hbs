@@ -1,0 +1,50 @@
+{{> navigation}}
+<div class="profile-page">
+  <div class="sidebar_profile">
+    <a class="sidebar-back-button" href="/profile" data-link>←</a>
+  </div>
+
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-avatar"></div>
+      <h1 class="profile-name">{{firstName}}</h1>
+    </div>
+
+    <form class="edit-profile-form">
+      <div>
+        <label for="email">Почта</label>
+        <input type="email" id="email" name="email" value="pochta@yandex.ru" />
+      </div>
+
+      <div>
+        <label for="login">Логин</label>
+        <input type="text" id="login" name="login" value="Ivankanov" />
+      </div>
+
+      <div>
+        <label for="firstName">Имя</label>
+        <input type="text" id="firstName" name="firstName" value="Иван" />
+      </div>
+
+      <div>
+        <label for="lastName">Фамилия</label>
+        <input type="text" id="lastName" name="lastName" value="Иванов" />
+      </div>
+
+      <div>
+        <label for="displayName">Имя в чате</label>
+        <input type="text" id="displayName" name="displayName" value="Иван" />
+      </div>
+
+      <div>
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone" value="+7 (909) 967 30 30" />
+      </div>
+
+      <div class="edit-profile-actions">
+        <button type="submit" class="save-button"><a href="/profile" data-link></a> Сохранить</button>
+        <a href="/profile" data-link class="cancel-button">Отмена</a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,46 +1,65 @@
-document.getElementById('registerForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirmPassword');
-    
-    if (password.value !== confirmPassword.value) {
-      showError('Пароли не совпадают!');
-      return;
-    }
+function initRegistration() {
+  const registerForm = document.getElementById('registerForm');
   
-    const formData = {
-      email: document.getElementById('email').value,
-      login: document.getElementById('login').value,
-      firstName: document.getElementById('firstName').value,
-      lastName: document.getElementById('lastName').value,
-      phone: document.getElementById('phone').value,
-      password: password.value
-    };
-  
-    if (!validatePhone(formData.phone)) {
-      showError('Неверный формат телефона');
-      return;
-    }
-  
-    try {
-      const response = await fakeApiCall(formData);
-      console.log('Успешная регистрация:', response);
-      alert('Регистрация завершена!');
-    } catch (error) {
-      showError(error.message);
-    }
-  });
-  
-  function validatePhone(phone) {
-    const regex = /^\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}$/;
-    return regex.test(phone);
-  }
-  
-  function showError(message) {
+  if (!registerForm) console.warn("error");
+
+  const validatePhone = (phone) => /^\+7\d{10}$/.test(phone);
+
+  const validatePassword = (password) => password.length >= 8;
+
+  const showError = (message) => {
     const errorElement = document.createElement('div');
     errorElement.className = 'error-message';
     errorElement.textContent = message;
-    document.querySelector('.auth-form').prepend(errorElement);
+    registerForm.prepend(errorElement);
     setTimeout(() => errorElement.remove(), 3000);
-  }
+  };
+
+  registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const existingErrors = document.querySelectorAll('.error-message');
+    existingErrors.forEach(error => error.remove());
+
+    const getValue = (id) => registerForm.querySelector(`#${id}`)?.value.trim();
+
+    const formData = {
+      email: getValue('email'),
+      login: getValue('login'),
+      firstName: getValue('first_name'),
+      lastName: getValue('second_name'),
+      phone: getValue('phone'),
+      password: getValue('password'),
+      confirmPassword: getValue('confirmPassword')
+    };
+
+    if (formData.password !== formData.confirmPassword) {
+      showError('Пароли не совпадают!');
+      return;
+    }
+
+    if (!validatePassword(formData.password)) {
+      showError('Пароль должен быть не менее 8 символов');
+      return;
+    }
+
+    if (!validatePhone(formData.phone)) {
+      showError('Неверный формат телефона (+79991234567)');
+      return;
+    }
+
+    const submitButton = registerForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      window.location.href = '/auth';
+    } catch (error) {
+      showError('Ошибка регистрации');
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initRegistration);
