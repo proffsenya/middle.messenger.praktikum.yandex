@@ -18,7 +18,7 @@
 
 ### На веб-приложение:
 
-Netlify: https://yandexsprint1.netlify.app/chats
+Netlify: https://yandexsprint1.netlify.app
 
 ### На сверстанные макета:
 
