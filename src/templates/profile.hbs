@@ -1,40 +1,43 @@
-{{> navigation}}
-<div class="profile-page">
-  {{> profile-sidebar }}
+<main>
+  {{> navigation}}
+  <div class="profile-page">
+    {{> profile-sidebar }}
 
-  <div class="profile-container">
-    <div class="profile-header">
-      <div class="profile-avatar"></div>
-      <h1 class="profile-name">{{firstName}}</h1>
-    </div>
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="profile-avatar"></div>
+        <h1 class="profile-name">{{firstName}}</h1>
+      </div>
 
-    <table class="profile-table">
-      <tr>
-        <td class="field-label">Почта</td>
-        <td class="field-value">{{email}}</td>
-      </tr>
-      <tr>
-        <td class="field-label">Логин</td>
-        <td class="field-value">{{login}}</td>
-      </tr>
-      <tr>
-        <td class="field-label">Фамилия</td>
-        <td class="field-value">{{lastName}}</td>
-      </tr>
-      <tr>
-        <td class="field-label">Имя в чате</td>
-        <td class="field-value">{{displayName}}</td>
-      </tr>
-      <tr>
-        <td class="field-label">Телефон</td>
-        <td class="field-value">{{phone}}</td>
-      </tr>
-    </table>
+      <table class="profile-table">
+        <tr>
+          <td class="field-label">Почта</td>
+          <td class="field-value">{{email}}</td>
+        </tr>
+        <tr>
+          <td class="field-label">Логин</td>
+          <td class="field-value">{{login}}</td>
+        </tr>
+        <tr>
+          <td class="field-label">Фамилия</td>
+          <td class="field-value">{{lastName}}</td>
+        </tr>
+        <tr>
+          <td class="field-label">Имя в чате</td>
+          <td class="field-value">{{displayName}}</td>
+        </tr>
+        <tr>
+          <td class="field-label">Телефон</td>
+          <td class="field-value">{{phone}}</td>
+        </tr>
+      </table>
 
-    <div class="profile-actions">
-      <a class="action-link" href="/profile/edit" id="editData">Изменить данные</a>
-      <a class="action-link" href="/profile/changepswd" id="editPassword">Изменить пароль</a>
-      <a class="action-link logout-link" href="#" id="logout">Выйти</a>
+      <div class="profile-actions">
+        <a class="action-link" href="/profile/edit" id="editData">Изменить данные</a>
+        <a class="action-link" href="/profile/changepswd" id="editPassword">Изменить пароль</a>
+        <a class="action-link logout-link" href="#" id="logout">Выйти</a>
+      </div>
     </div>
   </div>
-</div>
+</main>
+
