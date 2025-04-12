@@ -137,6 +137,7 @@ function router() {
   else handleNotFound();
 }
 
+
 document.addEventListener('click', e => {
   if (e.target.matches('[data-link]')) {
     e.preventDefault();

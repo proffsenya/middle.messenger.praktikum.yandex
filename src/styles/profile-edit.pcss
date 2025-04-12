@@ -23,7 +23,7 @@
 
   &:focus {
     outline: none;
-    border-color: #3369f3;
+    border-color: #3b82f6;
     box-shadow: 0 0 0 2px rgba(51, 105, 243, 0.2);
   }
 }
@@ -46,11 +46,11 @@
 }
 
 .save-button {
-  background-color: #3369f3;
+  background-color: #3b82f6;
   color: white;
 
   &:hover {
-    background-color: #2a56d0;
+    background-color: #2563eb;
   }
 }
 
@@ -61,4 +61,42 @@
   &:hover {
     background-color: #e0e0e0;
   }
+}
+
+.profile-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: #ddd;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.avatar-upload-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.avatar-upload-overlay input[type="file"] {
+  display: none;
+}
+
+.profile-avatar:hover .avatar-upload-overlay {
+  opacity: 1;
 }
