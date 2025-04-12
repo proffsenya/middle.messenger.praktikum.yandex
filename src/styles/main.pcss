@@ -1,0 +1,40 @@
+@import "./variables.pcss";
+@import "./auth.pcss";
+@import "./error.pcss";
+@import "./chats.pcss";
+@import "./profile.pcss";
+@import "./navigation.pcss";
+@import "./profile-edit.pcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.dashed-line {
+  border-top: 2px dashed #cbd5e0;
+  margin: 1rem 0;
+}
+
+input[type="tel"] {
+  letter-spacing: 0.5px;
+}
+
+input:invalid:not(:placeholder-shown) {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 2rem;
+
+  span {
+    color: #2d3748;
+    font-size: 1.1rem;
+  }
+}

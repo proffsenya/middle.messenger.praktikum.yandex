@@ -1,0 +1,39 @@
+<main>
+  {{> navigation}}
+  <div class="auth-container">
+    <div class="auth-header">
+      <h1 class="auth-title">Вход</h1>
+    </div>
+
+    <form class="auth-form" id="authForm">
+      <div class="input-group">
+        <label for="login">Логин</label>
+        <input 
+          type="text" 
+          id="login" 
+          name="login" 
+          placeholder="Введите ваш логин"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="password">Пароль</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="********"
+          required
+        >
+      </div>
+
+      <button type="submit" class="auth-button">Войти</button>
+      
+      <div class="auth-footer">
+      <span>Нет аккаунта? <a href="/register" data-link>Зарегистрироваться</a></span>
+    </div>
+    </form>
+  </div>
+</main>
+
