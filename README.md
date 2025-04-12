@@ -26,18 +26,7 @@ Figma: https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?no
 
 ### На сверстанные страницы:
 
-Чаты: https://yandexsprint1.netlify.app/chats - базовая страница
+Чаты: https://yandexsprint1.netlify.app
 
-Регистрация: https://yandexsprint1.netlify.app/register
+Переходя по меню навигации можно увидеть остальные сверстанные страницы
 
-Авторизация: https://yandexsprint1.netlify.app/auth
-
-Профиль: https://yandexsprint1.netlify.app/profile
-
-Ошибка404: https://yandexsprint1.netlify.app/404
-
-Ошибка500: https://yandexsprint1.netlify.app/500
-
-Изменение профиля: https://yandexsprint1.netlify.app/profile/edit
-
-Изменение пароля: https://yandexsprint1.netlify.app/profile/changepswd
