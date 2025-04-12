@@ -1,29 +1,32 @@
-{{> navigation}}
-<div class="container">
-  <aside class="sidebar_chats">
-    <div class="profile">
-      <a href="/profile" data-link>Профиль →</a>
-    </div>
-    <input class="search" type="text" placeholder="🔍 Поиск" />
-    <ul class="chat-list">
-      {{#each chats}}
-        <li class="chat-item {{#if selected}}selected{{/if}}">
-          <div class="avatar"></div>
-          <div class="chat-info">
-            <div class="name">{{name}}</div>
-            <div class="message">{{message}}</div>
-          </div>
-          <div class="chat-meta">
-            <div class="time">{{time}}</div>
-            {{#if unread}}
-              <div class="badge">{{unread}}</div>
-            {{/if}}
-          </div>
-        </li>
-      {{/each}}
-    </ul>
-  </aside>
-  <main class="chat-window">
-    <p class="placeholder">Выберите чат чтобы отправить сообщение</p>
-  </main>
-</div>
+<main>
+  {{> navigation}}
+  <div class="container">
+    <aside class="sidebar_chats">
+      <div class="profile">
+        <a href="/profile" data-link>Профиль →</a>
+      </div>
+      <input class="search" type="text" placeholder="🔍 Поиск" />
+      <ul class="chat-list">
+        {{#each chats}}
+          <li class="chat-item {{#if selected}}selected{{/if}}">
+            <div class="avatar"></div>
+            <div class="chat-info">
+              <div class="name">{{name}}</div>
+              <div class="message">{{message}}</div>
+            </div>
+            <div class="chat-meta">
+              <div class="time">{{time}}</div>
+              {{#if unread}}
+                <div class="badge">{{unread}}</div>
+              {{/if}}
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </aside>
+    <main class="chat-window">
+      <p class="placeholder">Выберите чат чтобы отправить сообщение</p>
+    </main>
+  </div>
+</main>
+
